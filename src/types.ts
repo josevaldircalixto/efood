@@ -17,3 +17,11 @@ export type Restaurante = {
   capa: string;
   cardapio: Produto[];
 };
+
+export type CartItem = {
+  id: number;
+  nome: string;
+  foto: string;
+  preco: number;
+  quantidade: number;
+};

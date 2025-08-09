@@ -1,12 +1,15 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Home from "./pages/Home";
 import Restaurante from "./pages/Restaurante";
-import { GlobalCss } from "./styles";
+import CartDrawer from "./components/CartDrawer"; // <- add
 
 function App() {
   return (
     <BrowserRouter>
-      <GlobalCss />
+      {/* Drawer fica aqui para aparecer em todas as rotas */}
+      <CartDrawer />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/restaurante/:id" element={<Restaurante />} />

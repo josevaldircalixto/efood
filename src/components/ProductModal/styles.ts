@@ -30,6 +30,7 @@ export const Close = styled.button`
   background: transparent;
   border: 0;
   color: #fff;
+  cursor: pointer;
 `;
 
 export const Photo = styled.img`
@@ -64,4 +65,5 @@ export const BuyBtn = styled.button`
   border: 0;
   border-radius: 4px;
   padding: 8px 12px;
+  cursor: pointer;
 `;
