@@ -1,4 +1,3 @@
-// src/components/CartDrawer/styles.ts
 import styled, { keyframes } from "styled-components";
 import { cores } from "../../styles";
 
@@ -32,42 +31,51 @@ export const Panel = styled.aside`
 `;
 
 export const Title = styled.h3`
-  margin: 8px 8px 0;
-  font-size: 16px;
-  font-weight: 700;
+  margin: 8px;
+  font-size: 18px;
+  font-weight: bold;
 `;
 
 export const Item = styled.div`
-  background: rgba(255, 255, 255, 0.1);
+  height: 100px;
+  background: ${cores.laranjaClaro};
+  color: ${cores.laranja};
   border-radius: 8px;
   padding: 8px;
   display: grid;
-  grid-template-columns: 56px 1fr auto;
+  grid-template-columns: 1fr 3fr auto;
   gap: 8px;
   align-items: center;
+  position: relative;
 
   img {
-    width: 56px;
-    height: 56px;
+    width: 80px;
+    height: 80px;
     object-fit: cover;
     border-radius: 4px;
+  }
+
+  strong {
+    margin-bottom: 16px;
   }
 `;
 
 export const Remove = styled.button`
   background: transparent;
   border: 0;
-  color: #fff;
+  color: ${cores.laranja};
   cursor: pointer;
   font-size: 16px;
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
 `;
 
 export const Qty = styled.div`
   display: inline-flex;
   gap: 8px;
   align-items: center;
-  margin-left: 8px;
-
+  margin-top: 8px;
   button {
     background: #fff;
     color: ${cores.laranja};
@@ -82,8 +90,7 @@ export const Qty = styled.div`
 `;
 
 export const TotalBar = styled.div`
-  margin-top: auto;
-  background: rgba(255, 255, 255, 0.1);
+  margin-top: 8px;
   border-radius: 8px;
   padding: 8px;
   display: flex;
@@ -92,11 +99,49 @@ export const TotalBar = styled.div`
 `;
 
 export const Action = styled.button`
-  background: #fff;
+  background: ${cores.laranjaClaro};
   color: ${cores.laranja};
   border: 0;
   border-radius: 4px;
   padding: 10px 12px;
   font-weight: 700;
   cursor: pointer;
+`;
+
+/** ------- forms ------- */
+export const Form = styled.form`
+  display: grid;
+  gap: 8px;
+`;
+
+export const Label = styled.label`
+  font-size: 12px;
+  font-weight: 700;
+`;
+
+export const Input = styled.input`
+  width: 100%;
+  background: #fff;
+  color: ${cores.laranja};
+  border: 0;
+  border-radius: 4px;
+  height: 28px;
+  padding: 0 8px;
+  font-weight: 700;
+`;
+
+export const Row = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+`;
+
+export const Subtle = styled.button`
+  background: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-weight: 700;
 `;

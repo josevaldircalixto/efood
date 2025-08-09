@@ -2,12 +2,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Restaurante from "./pages/Restaurante";
-import CartDrawer from "./components/CartDrawer"; // <- add
+import CartDrawer from "./components/CartDrawer";
 
 function App() {
   return (
     <BrowserRouter>
-      {/* Drawer fica aqui para aparecer em todas as rotas */}
       <CartDrawer />
 
       <Routes>

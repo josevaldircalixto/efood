@@ -1,5 +1,5 @@
 import { HeaderContainer, LinkButton, Logo, CartInfo } from "./styles";
-import LogoImg from "../../assets/logo.svg"; // <- corrige extensão
+import LogoImg from "../../assets/logo.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { selectCartCount } from "../../store/cartSlice";
 import { openCart } from "../../store/uiSlice";

@@ -25,3 +25,31 @@ export type CartItem = {
   preco: number;
   quantidade: number;
 };
+
+/** ------ Checkout ------ */
+export type DeliveryData = {
+  receiver: string;
+  address: string;
+  city: string;
+  zipCode: string;
+  number: string;
+  complement?: string;
+};
+
+export type PaymentData = {
+  cardName: string;
+  cardNumber: string;
+  cvv: string;
+  expiresMonth: string;
+  expiresYear: string;
+};
+
+export type CheckoutPayload = {
+  products: { id: number; price: number }[];
+  delivery: DeliveryData;
+  payment: PaymentData;
+};
+
+export type CheckoutResponse = {
+  orderId: string;
+};
