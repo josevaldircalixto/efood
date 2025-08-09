@@ -28,23 +28,25 @@ const RestaurantCard = ({
   rating,
 }: Props) => {
   return (
-    <Card>
-      <Image src={image} alt={title} />
-      <div className="tagsSuperiores">
-        {tag1 && <Tag>{tag1}</Tag>}
-        <Tag>{tag2}</Tag>
-      </div>
-      <Info>
-        <TitleRate>
-          <Title>{title}</Title>
-          <span> {rating.toFixed(1)} ⭐</span>
-        </TitleRate>
-        <Description>{description}</Description>
-        <div>
-          <Button>Saiba mais</Button>
+    <Link to="/restaurante" style={{ textDecoration: "none" }}>
+      <Card>
+        <Image src={image} alt={title} />
+        <div className="tagsSuperiores">
+          {tag1 && <Tag>{tag1}</Tag>}
+          <Tag>{tag2}</Tag>
         </div>
-      </Info>
-    </Card>
+        <Info>
+          <TitleRate>
+            <Title>{title}</Title>
+            <span>{rating.toFixed(1)} ⭐</span>
+          </TitleRate>
+          <Description>{description}</Description>
+          <div>
+            <Button>Saiba mais</Button>
+          </div>
+        </Info>
+      </Card>
+    </Link>
   );
 };
 
