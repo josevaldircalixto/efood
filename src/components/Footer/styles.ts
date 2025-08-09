@@ -1,9 +1,13 @@
 import styled from "styled-components";
+import { cores } from "../../styles";
 
 export const Container = styled.footer`
+  display: flex;
+  flex-direction: column;
   background-color: #fff0e1;
   text-align: center;
   height: 298px;
+  align-items: center;
 `;
 
 export const Logo = styled.img`
@@ -13,9 +17,11 @@ export const Logo = styled.img`
 
 export const SocialIcons = styled.div`
   display: flex;
-  justify-content: center;
+  height: 24px;
+  width: 88px;
   gap: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 80px;
+  justify-content: center;
 `;
 
 export const Icon = styled.img`
@@ -24,8 +30,7 @@ export const Icon = styled.img`
 `;
 
 export const LegalText = styled.p`
-  font-size: 14px;
-  color: #e66767;
-  max-width: 500px;
-  margin: 0 auto;
+  font-size: 10px;
+  color: ${cores.laranja};
+  max-width: 480px;
 `;

@@ -1,11 +1,11 @@
-import { createGlobalStyle } from 'styled-components'
+// src/styles.ts
+import styled, { createGlobalStyle } from "styled-components";
 
 export const cores = {
-  branca: '#fff',
-  laranja: '#E66767',
-  laranjaClaro: '#FFEBD9'
-}
-
+  branca: "#fff",
+  laranja: "#E66767",
+  laranjaClaro: "#FFEBD9",
+};
 
 export const GlobalCss = createGlobalStyle`
   * {
@@ -15,13 +15,19 @@ export const GlobalCss = createGlobalStyle`
     font-family: Roboto, sans-serif;
   }
 
-   button {
+  button {
     cursor: pointer;
   }
 
-   .container{
+  .container {
     max-width: 1024px;
     width: 100%;
     margin: 0 auto;
   }
-`
+`;
+
+export const Container = styled.div`
+  max-width: 1024px;
+  width: 100%;
+  margin: 0 auto;
+`;

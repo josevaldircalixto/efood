@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   Card,
   Image,
@@ -14,7 +15,7 @@ type Props = {
   description: string;
   image: string;
   tag1?: string;
-  tag2?: string;
+  tag2: string;
   rating: number;
 };
 
@@ -30,7 +31,7 @@ const RestaurantCard = ({
     <Card>
       <Image src={image} alt={title} />
       <div className="tagsSuperiores">
-        <Tag>{tag1}</Tag>
+        {tag1 && <Tag>{tag1}</Tag>}
         <Tag>{tag2}</Tag>
       </div>
       <Info>

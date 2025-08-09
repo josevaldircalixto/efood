@@ -1,7 +1,7 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Home from './pages/Home'
-import Restaurante from './pages/Restaurante'
-import { GlobalCss } from './styles'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Restaurante from "./pages/Restaurante";
+import { GlobalCss } from "./styles";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <Route path="/restaurante" element={<Restaurante />} />
       </Routes>
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;
