@@ -1,15 +1,15 @@
 import { Container } from "../../styles";
 import { Banner, Category, Title } from "./styles";
-import bannerImage from "../../assets/imagemdefundo.png";
 
-interface Props {
+type Props = {
   title: string;
   category: string;
-}
+  background: string;
+};
 
-const BannerRestaurante = ({ title, category }: Props) => {
+const BannerRestaurante = ({ title, category, background }: Props) => {
   return (
-    <Banner style={{ backgroundImage: `url(${bannerImage})` }}>
+    <Banner style={{ backgroundImage: `url(${background})` }}>
       <Container>
         <Category>{category}</Category>
         <Title>{title}</Title>

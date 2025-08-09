@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import {
   Card,
+  ImageWrapper,
   Image,
   Info,
   Title,
@@ -8,6 +9,7 @@ import {
   Tag,
   Button,
   TitleRate,
+  TagsTop,
 } from "./styles";
 
 type Props = {
@@ -17,6 +19,7 @@ type Props = {
   tag1?: string;
   tag2: string;
   rating: number;
+  to?: string; // 👈 nova prop opcional
 };
 
 const RestaurantCard = ({
@@ -26,28 +29,34 @@ const RestaurantCard = ({
   tag1,
   tag2,
   rating,
-}: Props) => {
-  return (
-    <Link to="/restaurante" style={{ textDecoration: "none" }}>
-      <Card>
-        <Image src={image} alt={title} />
-        <div className="tagsSuperiores">
-          {tag1 && <Tag>{tag1}</Tag>}
-          <Tag>{tag2}</Tag>
-        </div>
-        <Info>
-          <TitleRate>
-            <Title>{title}</Title>
-            <span>{rating.toFixed(1)} ⭐</span>
-          </TitleRate>
-          <Description>{description}</Description>
-          <div>
-            <Button>Saiba mais</Button>
-          </div>
-        </Info>
-      </Card>
-    </Link>
-  );
-};
+  to,
+}: Props) => (
+  <Card>
+    <ImageWrapper>
+      <Image src={image} alt={title} />
+      <TagsTop>
+        {tag1 && <Tag>{tag1}</Tag>}
+        <Tag>{tag2}</Tag>
+      </TagsTop>
+    </ImageWrapper>
+
+    <Info>
+      <TitleRate>
+        <Title>{title}</Title>
+        <span>{rating.toFixed(1)} ⭐</span>
+      </TitleRate>
+      <Description>{description}</Description>
+
+      {/* Se tiver "to", o botão é um Link. Senão, é um button normal */}
+      {to ? (
+        <Button as={Link} to={to}>
+          Saiba mais
+        </Button>
+      ) : (
+        <Button>Saiba mais</Button>
+      )}
+    </Info>
+  </Card>
+);
 
 export default RestaurantCard;

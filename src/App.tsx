@@ -9,7 +9,7 @@ function App() {
       <GlobalCss />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/restaurante" element={<Restaurante />} />
+        <Route path="/restaurante/:id" element={<Restaurante />} />
       </Routes>
     </BrowserRouter>
   );

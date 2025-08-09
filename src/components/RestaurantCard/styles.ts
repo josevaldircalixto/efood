@@ -6,25 +6,33 @@ export const Card = styled.div`
   border-radius: 8px;
   overflow: hidden;
   max-width: 472px;
-  height: 398px;
+  width: 100%;
   position: relative;
+  background: #fff;
+`;
 
-  .tagsSuperiores {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    display: flex;
-    gap: 8px;
-  }
+/* wrapper só da imagem – assim as tags ficam presas nela */
+export const ImageWrapper = styled.div`
+  position: relative;
 `;
 
 export const Image = styled.img`
   width: 100%;
-  height: auto;
+  height: 217px; /* trava a altura da foto */
+  object-fit: cover; /* corta sem distorcer */
+  display: block;
+`;
+
+export const TagsTop = styled.div`
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  gap: 8px;
 `;
 
 export const Info = styled.div`
-  padding: 8px;
+  padding: 12px 16px 16px;
 `;
 
 export const TitleRate = styled.div`
@@ -46,9 +54,15 @@ export const Title = styled.h3`
 
 export const Description = styled.p`
   font-size: 14px;
-  color: ${cores.laranja};
-  margin: 16px 0px;
+  color: #000;
+  margin: 12px 0 16px;
   line-height: 22px;
+
+  /* evita que textos enormes quebrem o card */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 `;
 
 export const Tag = styled.span`
@@ -57,8 +71,8 @@ export const Tag = styled.span`
   font-size: 12px;
   font-weight: bold;
   border-radius: 2px;
-  margin-right: 8pxs;
-  padding: 6px 4px;
+  padding: 6px 8px;
+  margin-right: 8px; /* corrigido */
 `;
 
 export const Button = styled.button`
@@ -69,5 +83,3 @@ export const Button = styled.button`
   padding: 4px 6px;
   font-size: 14px;
 `;
-
-export {};

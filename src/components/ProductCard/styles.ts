@@ -6,9 +6,12 @@ export const Card = styled.div`
   border-radius: 8px;
   color: #fff;
   max-width: 320px;
+  max-height: 338px;
 `;
 
 export const Image = styled.img`
+  max-height: 167px;
+  max-width: 304px;
   width: 100%;
   border-radius: 4px;
 `;
@@ -22,6 +25,11 @@ export const Title = styled.h3`
 export const Description = styled.p`
   font-size: 14px;
   margin: 8px auto 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* número de linhas antes do corte */
+  -webkit-box-orient: vertical;
 `;
 
 export const Button = styled.button`
