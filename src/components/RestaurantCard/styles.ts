@@ -54,7 +54,7 @@ export const Title = styled.h3`
 
 export const Description = styled.p`
   font-size: 14px;
-  color: #000;
+  color: ${cores.laranja};
   margin: 12px 0 16px;
   line-height: 22px;
 
@@ -82,4 +82,5 @@ export const Button = styled.button`
   border-radius: 4px;
   padding: 4px 6px;
   font-size: 14px;
+  text-decoration: none;
 `;

@@ -19,7 +19,7 @@ type Props = {
   tag1?: string;
   tag2: string;
   rating: number;
-  to?: string; // 👈 nova prop opcional
+  to?: string;
 };
 
 const RestaurantCard = ({

@@ -10,11 +10,13 @@ const HeaderRestaurante = () => {
 
   return (
     <HeaderContainer>
-      <LinkButton href="/">Restaurantes</LinkButton>
-      <Logo src={LogoImg} alt="efood" />
-      <CartInfo as="button" onClick={() => dispatch(openCart())}>
-        {count} produto(s) no carrinho
-      </CartInfo>
+      <div>
+        <LinkButton href="/">Restaurantes</LinkButton>
+        <Logo src={LogoImg} alt="efood" />
+        <CartInfo as="button" onClick={() => dispatch(openCart())}>
+          {count} produto(s) no carrinho
+        </CartInfo>
+      </div>
     </HeaderContainer>
   );
 };

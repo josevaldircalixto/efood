@@ -5,7 +5,7 @@ type Props = {
   title: string;
   description: string;
   image: string;
-  onAdd?: () => void; // <- callback pra abrir a modal
+  onAdd?: () => void;
 };
 
 const ProductCard = ({ title, description, image, onAdd }: Props) => (
