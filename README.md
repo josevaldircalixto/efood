@@ -1,46 +1,148 @@
-# Getting Started with Create React App
+E-food — Catálogo de Restaurantes com Carrinho e Checkout
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Stack: React + TypeScript • React Router • Redux Toolkit • Styled-Components
+API: ebac-fake-api.vercel.app (REST)
+Estado Global: carrinho, fluxo do checkout (cart → delivery → payment → confirm)
 
-## Available Scripts
+🎯 Sobre o projeto
 
-In the project directory, you can run:
+Aplicação front-end que lista restaurantes e permite visualizar cardápio, adicionar/remover itens ao carrinho, preencher entrega, pagamento e confirmar pedido. A arquitetura prioriza componentização, estado previsível (Redux Toolkit) e UX de compra com um drawer lateral para o fluxo de checkout.
 
-### `npm start`
+UX: carrinho “drawer” com etapas (Entrega/Payment/Confirm) e transições.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Imagens responsivas com object-fit (sem distorção).
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Rotas:
 
-### `npm test`
+/ — Home com grid de restaurantes
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+/restaurante/:id — Página de detalhes com cardápio
 
-### `npm run build`
+Demo: https://efood-inky-ten.vercel.app/
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+✨ Destaques para recrutadores
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Arquitetura limpa de estado: slices cart e ui com selectors (selectCartCount, selectCartTotal) e ações idempotentes.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Fluxo de checkout robusto: etapas controladas por FSM simples (stage: 'CART' | 'DELIVERY' | 'PAYMENT' | 'CONFIRM') com validações mínimas.
 
-### `npm run eject`
+Integração de API: fetch com tratamento de erro + postCheckout tipado.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Atenção a UI: cards com altura fixa de imagens, tags sobrepostas, truncamento de texto e alinhamento consistente de CTAs.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Código em TypeScript: tipagem de payloads, entidades e estado global.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+🧭 Navegação & Páginas
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Home (/)
+Lista de restaurantes (imagem, tags, rating, descrição truncada e CTA).
 
-## Learn More
+Restaurante (/restaurante/:id)
+Banner, cardápio e action para abrir modal / adicionar item ao carrinho (quando aplicável).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Carrinho (Drawer)
+Itens com +/-, remoção, total e fluxo Entrega → Pagamento → Confirmação.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+🧱 Arquitetura de Estado (Redux Toolkit)
+
+cartSlice.ts
+
+items: CartItem[]
+
+Ações: addItem, decreaseItem, removeItem, clearCart
+
+Selectors: selectCartCount, selectCartTotal
+
+uiSlice.ts
+
+isCartOpen: boolean, stage, orderId
+
+Ações: openCart, closeCart, goToDelivery, goToPayment, backToCart, backToDelivery, showConfirm
+
+🔌 Integração com API
+
+Restaurantes
+
+GET /api/efood/restaurantes — lista
+
+GET /api/efood/restaurantes/:id — detalhe
+
+Checkout
+
+POST /api/efood/checkout — { products, delivery, payment } → { orderId }
+
+🛠️ Como rodar localmente
+# 1) Clonar
+git clone <URL_DO_REPO>
+cd <PASTA>
+
+# 2) Instalar dependências
+npm install
+
+# 3) Rodar em desenvolvimento
+npm run dev
+
+# 4) Build de produção
+npm run build
+npm run preview
+
+
+Requisitos: Node 18+ e npm.
+
+🧩 Principais componentes
+
+RestaurantCard: imagem com wrapper e tags fixas no topo, título + rating, descrição truncada e CTA “Saiba mais”.
+
+CartDrawer: overlay + painel com animação, etapas do checkout, validação mínima e submissão para postCheckout.
+
+Header/Footer: navegação simples + identidade visual consistente.
+
+💅 Estilo & UI
+
+Styled-Components em todos os componentes (sem CSS global pesado).
+
+Imagens sem deformar: altura travada e object-fit: cover.
+
+Acessibilidade básica: botões com title/aria-label quando necessário e alt em imagens.
+
+Tipografia com vibe de IDE (fonte “mono-like” onde fizer sentido para reforçar identidade dev).
+
+🔒 Qualidade & Boas práticas
+
+TypeScript first (tipos para dados da API, slices e formulários).
+
+Separação de responsabilidades (services/, store/, pages/, components/).
+
+Utilitários reutilizáveis (ex.: formatCurrency).
+
+Tratamento de erros de rede com mensagens amigáveis.
+
+🧪 Ideias de testes (próximos passos)
+
+Unit: reducers de cartSlice e uiSlice (Jest + @reduxjs/toolkit).
+
+Componentes: RestaurantCard e CartDrawer (React Testing Library).
+
+E2E: fluxo completo de compra (Playwright/Cypress).
+
+🚀 Roadmap
+
+ Máscaras e validação mais robusta de pagamento/endereço
+
+ Testes unitários e e2e
+
+ Toasts de feedback (ex.: item adicionado)
+
+ Loading skeletons
+
+ A11y: foco gerenciado no drawer e Esc para fechar
+
+🧑‍💻 Autor
+
+José Valdir Calixto — Desenvolvedor Front-End / em transição para Full-Stack Java
+
+Portfólio: https://techcalixto.com.br/
+
+LinkedIn: https://linkedin.com/in/josevaldircalixto
+
+Email: josevaldirdev@gmail.com
