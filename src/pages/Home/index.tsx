@@ -57,10 +57,11 @@ const Home = () => {
         {!carregando && !erro && (
           <div
             style={{
-              display: "flex",
-              flexWrap: "wrap",
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
               gap: "16px",
               justifyContent: "center",
+              justifyItems: "center",
               padding: "32px 0",
             }}
           >
